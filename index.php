@@ -1,3 +1,7 @@
+<?php
+session_start();
+$auth = isset($_SESSION['auth']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -400,7 +404,7 @@
   // echo "<br>";
   // echo "_SERVER['SCRIPT_URI'] : ",$_SERVER['SCRIPT_URI'];
   // echo "<br>";
-  
+
   // echo "<a href='index.php?name=AyeAye&age=14&state=Yangon&city=Myanmar'>go to next page</a>";
   // $name = $_GET['name'] ?? "";
   // $age = $_GET['age'] ?? "";
@@ -463,81 +467,90 @@
   //   ";
   // }
 
-  echo "
-  <b>Select a date:</b>
-  <form action='index.php' method='post'>
-    <select name='month'>
-      <option>January</option>
-      <option>February</option>
-      <option>March</option>
-      <option>April</option>
-      <option>May</option>
-      <option>June</option>
-      <option>July</option>
-      <option>August</option>
-      <option>September</option>
-      <option>October</option>
-      <option>November</option>
-      <option>December</option>
-    </select>
-    <select name='day'>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option>10</option>
-      <option>11</option>
-      <option>12</option>
-      <option>13</option>
-      <option>14</option>
-      <option>15</option>
-      <option>16</option>
-      <option>17</option>
-      <option>18</option>
-      <option>19</option>
-      <option>20</option>
-      <option>21</option>
-      <option>22</option>
-      <option>23</option>
-      <option>24</option>
-      <option>25</option>
-      <option>26</option>
-      <option>27</option>
-      <option>28</option>
-      <option>29</option>
-      <option>30</option>
-      <option>31</option>
-    </select>
-    <select name='year'>
-      <option>2020</option>
-      <option>2021</option>
-      <option>2022</option>
-      <option>2023</option>
-      <option>2024</option>
-      <option>2025</option>
-    </select>
-    <input type='submit' value='Submit'>
-  </form>
-  ";
+  // echo "
+  // <b>Select a date:</b>
+  // <form action='index.php' method='post'>
+  //   <select name='month'>
+  //     <option>January</option>
+  //     <option>February</option>
+  //     <option>March</option>
+  //     <option>April</option>
+  //     <option>May</option>
+  //     <option>June</option>
+  //     <option>July</option>
+  //     <option>August</option>
+  //     <option>September</option>
+  //     <option>October</option>
+  //     <option>November</option>
+  //     <option>December</option>
+  //   </select>
+  //   <select name='day'>
+  //     <option>1</option>
+  //     <option>2</option>
+  //     <option>3</option>
+  //     <option>4</option>
+  //     <option>5</option>
+  //     <option>6</option>
+  //     <option>7</option>
+  //     <option>8</option>
+  //     <option>9</option>
+  //     <option>10</option>
+  //     <option>11</option>
+  //     <option>12</option>
+  //     <option>13</option>
+  //     <option>14</option>
+  //     <option>15</option>
+  //     <option>16</option>
+  //     <option>17</option>
+  //     <option>18</option>
+  //     <option>19</option>
+  //     <option>20</option>
+  //     <option>21</option>
+  //     <option>22</option>
+  //     <option>23</option>
+  //     <option>24</option>
+  //     <option>25</option>
+  //     <option>26</option>
+  //     <option>27</option>
+  //     <option>28</option>
+  //     <option>29</option>
+  //     <option>30</option>
+  //     <option>31</option>
+  //   </select>
+  //   <select name='year'>
+  //     <option>2020</option>
+  //     <option>2021</option>
+  //     <option>2022</option>
+  //     <option>2023</option>
+  //     <option>2024</option>
+  //     <option>2025</option>
+  //   </select>
+  //   <input type='submit' value='Submit'>
+  // </form>
+  // ";
+  // $month = $_POST['month'] ?? "";
+  // $day = $_POST['day'] ?? "";
+  // $year = $_POST['year'] ?? "";
 
-  $month = $_POST['month'] ?? "";
-  $day = $_POST['day'] ?? "";
-  $year = $_POST['year'] ?? "";
-
-  if(!empty($month) and !empty($day) and !empty($year)){
-    echo "
-    Month =$month<br>
-    Day =$day<br>
-    Year =$year
-    ";
-  }
-
+  // if (!empty($month) and !empty($day) and !empty($year)) {
+  //   echo "
+  //   Month =$month<br>
+  //   Day =$day<br>
+  //   Year =$year
+  //   ";
+  // }
   ?>
+  <?php
+  if ($auth)
+  ?>
+  <div class="container">
+    <?php if ($auth) { ?>
+      <h1>UCSS</h1>
+      <p>You are now login.</p>
+      <p><b>Admin</b></p>
+      <a href="logout.php">Logout</a>
+    <?php } else {header("location:login.php");} ?>
+  </div>
 </body>
 
 </html>
