@@ -1,0 +1,10 @@
+<?php
+$name=$_FILES['photo']['name'];
+$tmp=$_FILES['photo']['tmp_name'];
+$type=$_FILES['photo']['type'];
+$size=$_FILES['photo']['size'];
+if($name){
+    move_uploaded_file($tmp,"images/$name");
+}
+header("location:fileUpload.php");
+?>
